@@ -1,18 +1,19 @@
-const API_URL = "https://pjpva7wyue.execute-api.us-east-2.amazonaws.com/ms";
+export const API_URL =
+  "https://pjpva7wyue.execute-api.us-east-2.amazonaws.com/ms";
 
-// fucion para recibir el mensaje desde ka peticion del get a un http 
+// función para recibir mensajes
 export async function getMessages() {
   const res = await fetch(API_URL);
   return res.json();
 }
 
-
-//funcion para enviar un mensaje nuevo 
-export async function addMessage(name, message) {
+// función para enviar mensaje nuevo
+export async function addMessage(name, message, image) {
   const res = await fetch(API_URL, {
-    method: "POST",      //metodo a utilizar 
+    method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, message }) // comvierte el mensaje en javascript a json 
+    body: JSON.stringify({ name, message, image }),
   });
+
   return res.json();
 }
